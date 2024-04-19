@@ -108,7 +108,8 @@
     "flow-bin": ">=0.117.0",
     "husky": "^0.14.3",
     "lint-staged": "^7.3.0",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "sass": "1.17.4"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json,css}": [
