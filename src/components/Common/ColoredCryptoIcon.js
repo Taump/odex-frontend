@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import Img from "../../components/Common/Img";
 import Colors from './Colors'
@@ -40,7 +40,7 @@ const transform = (name) => {
   }
 }
 
-const ColoredCryptoIcon = ({ name, color, size }) => {
+const ColoredCryptoIcon = memo(({ name, color, size }) => {
   color = color || Colors.BLUE5
   size = size || 28
 
@@ -73,9 +73,9 @@ const ColoredCryptoIcon = ({ name, color, size }) => {
     case 'WETH': return <ETH width={size} height={size} viewBox="0 0 32 32" />
     case 'ZRX': return <ZRX width={size} height={size} viewBox="0 0 32 32" />
     case 'GTC': return <GTC width={size} height={size} viewBox="0 0 32 32" />
-    default: return <Img fallbacks={[`https://cdn.jsdelivr.net/npm/obyte-icons@latest/build/${transform(name)}-INV.svg`, `https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.17.2/svg/color/${transform(name).toLowerCase()}.svg`, '/plug.svg']} width={size - 2} height={size - 2} />
+    default: return <Img fallbacks={[`https://cdn.jsdelivr.net/npm/obyte-icons@latest/build/${transform(name).toUpperCase()}-INV.svg`, `https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.17.2/svg/color/${transform(name).toLowerCase()}.svg`, '/plug.svg']} width={size - 2} height={size - 2} />
   }
-}
+});
 
 
 export default ColoredCryptoIcon
