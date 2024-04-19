@@ -197,7 +197,7 @@ const TokenWidget = (props: *) => {
     >
       {token => animation => {
         return (
-          <Box m={3} pb={3} style={animation}>
+          <Box m={3} pb={3} key={token.symbol} style={animation}>
             <FlexRow justifyContent="space-between">
               <FlexRow justifyContent="flex-end">
                 <FlexColumn mx={3}>

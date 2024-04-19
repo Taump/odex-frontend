@@ -4,7 +4,7 @@
   "scripts": {
     "start": "react-app-rewired start",
     "server": "PORT=8080 REACT_APP_DEFAULT_NETWORK_ID=testnet node server.js",
-    "build": "react-scripts build",
+    "build": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom --watch",
     "eject": "react-scripts eject",
     "flow": "flow",
@@ -108,7 +108,9 @@
     "flow-bin": ">=0.117.0",
     "husky": "^0.14.3",
     "lint-staged": "^7.3.0",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "react-app-rewire-uglifyjs": "^0.1.1",
+    "sass": "1.17.4"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json,css}": [
@@ -118,7 +120,6 @@
   },
   "browserslist": [
     ">0.2%",
-    "not dead",
     "not op_mini all"
   ],
   "prettier": {

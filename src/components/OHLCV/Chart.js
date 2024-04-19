@@ -1,10 +1,8 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import { format } from 'd3-format'
 import { timeFormat } from 'd3-time-format'
 import { Chart, ChartCanvas } from 'react-financial-charts'
-import { ClickCallback } from "react-financial-charts/lib/interactive";
-import { Menu, MenuItem, ContextMenuTarget } from '@blueprintjs/core'
+import { ContextMenuTarget } from '@blueprintjs/core'
 
 import {
   AreaSeries,

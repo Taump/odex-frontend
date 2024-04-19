@@ -435,7 +435,7 @@ const LimitOrderPanel = props => {
           value={amount}
           placeholder={displayMode.amountAlias}
           intent={insufficientBalance ? 'danger' : null}
-          rightElement={insufficientBalance ? <Total>Insufficient Balance</Total> : null}
+          rightElement={insufficientBalance ? <Total style={{ fontSize: 11 }}>Insufficient Balance</Total> : null}
         />
       </InputBox>
       <RadioButtonsWrapper>
@@ -504,7 +504,7 @@ const MarketOrderPanel = (props: *) => {
           placeholder="Amount"
           onChange={onInputChange}
           intent={insufficientBalance ? 'danger' : null}
-          rightElement={insufficientBalance ? <Total>Insufficient Balance</Total> : null}
+          rightElement={insufficientBalance ? <Total style={{fontSize: 11}}>Insufficient Balance</Total> : null}
         />
       </InputBox>
       <RadioButtonsWrapper>
@@ -569,7 +569,7 @@ const StopLimitOrderPanel = (props: *) => {
           value={amount}
           placeholder="Limit Price"
           intent={insufficientBalance ? 'danger' : null}
-          rightElement={insufficientBalance ? <Total>Insufficient Balance</Total> : null}
+          rightElement={insufficientBalance ? <Total style={{fontSize: 11}}>Insufficient Balance</Total> : null}
         />
       </InputBox>
       <InputBox>
@@ -820,12 +820,16 @@ const InputBox = styled.div`
   display: flex;
   padding-top: 5px;
   padding-bottom: 5px;
+  align-items: center;
+  width: 100%;
+  flex-grow: 0;
 `
 
 const InputLabel = styled.div`
   height: 100%;
   margin: auto;
-  width: 180px;
+  min-width: 140px;
+  flex-grow: 0;
 `
 
 const Total = styled.div`

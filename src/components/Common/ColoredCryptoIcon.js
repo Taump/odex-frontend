@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { memo } from 'react';
+
+import Img from "../../components/Common/Img";
 import Colors from './Colors'
 
 import AE from './Icons/icon/ae.js'
@@ -30,44 +32,50 @@ import FLMI from './Icons/icon/flmi.js'
 import FRECN from './Icons/icon/frecn.js'
 import GTC from './Icons/icon/gtc.js'
 
-import Generic from './Icons/icon/generic.js'
+const transform = (name) => {
+  switch (name) {
+    case 'KUSDC': return 'USDC'
+    case 'KUSDT': return 'USDT'
+    default: return name;
+  }
+}
 
-const ColoredCryptoIcon = ({ name, color, size }) => {
+const ColoredCryptoIcon = memo(({ name, color, size }) => {
   color = color || Colors.BLUE5
   size = size || 28
 
   switch (name) {
     // eslint-disable-next-line
-    case 'AE': return <AE width={size} height={size} viewBox="0 0 32 32"  />
-    case 'AION': return <AION width={size} height={size} viewBox="0 0 32 32"  />
-    case 'BAT': return <BAT width={size} height={size} viewBox="0 0 32 32"  />
-    case 'BNB': return <BNB width={size} height={size} viewBox="0 0 32 32"  />
-    case 'BTM': return <BTM width={size} height={size} viewBox="0 0 32 32"  />
-    case 'FUN': return <FUN width={size} height={size} viewBox="0 0 32 32"  />
-    case 'GNT': return <GNT width={size} height={size} viewBox="0 0 32 32"  />
-    case 'KCS': return <KCS width={size} height={size} viewBox="0 0 32 32"  />
-    case 'KNC': return <KNC width={size} height={size} viewBox="0 0 32 32"  />
-    case 'LOOM': return <LOOM width={size} height={size} viewBox="0 0 32 32"  />
-    case 'LRC': return <LRC width={size} height={size} viewBox="0 0 32 32"  />
-    case 'MITH': return <MITH width={size} height={size} viewBox="0 0 32 32"  />
-    case 'MKR': return <MKR width={size} height={size} viewBox="0 0 32 32"  />
-    case 'NPXS': return <NPXS width={size} height={size} viewBox="0 0 32 32"  />
-    case 'OMG': return <OMG width={size} height={size} viewBox="0 0 32 32"  />
-    case 'PPT': return <PPT width={size} height={size} viewBox="0 0 32 32"  />
-    case 'DAI': return <DAI width={size} height={size} viewBox="0 0 32 32"  />
-    case 'USDC': return <USD width={size} height={size} viewBox="0 0 32 32"  />
-    case 'REP': return <REP width={size} height={size} viewBox="0 0 32 32"  />
-    case 'SNT': return <SNT width={size} height={size} viewBox="0 0 32 32"  />
-    case 'TRX': return <TRX width={size} height={size} viewBox="0 0 32 32"  />
-    case 'TUSD': return <TUSD width={size} height={size} viewBox="0 0 32 32"  />
-    case 'WTC': return <WTC width={size} height={size} viewBox="0 0 32 32"  />
-    case 'ETH': return <ETH width={size} height={size} viewBox="0 0 32 32"  />
-    case 'WETH': return <ETH width={size} height={size} viewBox="0 0 32 32"  />
-    case 'ZRX': return <ZRX width={size} height={size} viewBox="0 0 32 32"  />
-    case 'GTC': return <GTC width={size} height={size} viewBox="0 0 32 32"  />
-    default: return <Generic width={size} height={size} viewBox="0 0 32 32"  />
+    case 'AE': return <AE width={size} height={size} viewBox="0 0 32 32" />
+    case 'AION': return <AION width={size} height={size} viewBox="0 0 32 32" />
+    case 'BAT': return <BAT width={size} height={size} viewBox="0 0 32 32" />
+    case 'BNB': return <BNB width={size} height={size} viewBox="0 0 32 32" />
+    case 'BTM': return <BTM width={size} height={size} viewBox="0 0 32 32" />
+    case 'FUN': return <FUN width={size} height={size} viewBox="0 0 32 32" />
+    case 'GNT': return <GNT width={size} height={size} viewBox="0 0 32 32" />
+    case 'KCS': return <KCS width={size} height={size} viewBox="0 0 32 32" />
+    case 'KNC': return <KNC width={size} height={size} viewBox="0 0 32 32" />
+    case 'LOOM': return <LOOM width={size} height={size} viewBox="0 0 32 32" />
+    case 'LRC': return <LRC width={size} height={size} viewBox="0 0 32 32" />
+    case 'MITH': return <MITH width={size} height={size} viewBox="0 0 32 32" />
+    case 'MKR': return <MKR width={size} height={size} viewBox="0 0 32 32" />
+    case 'NPXS': return <NPXS width={size} height={size} viewBox="0 0 32 32" />
+    case 'OMG': return <OMG width={size} height={size} viewBox="0 0 32 32" />
+    case 'PPT': return <PPT width={size} height={size} viewBox="0 0 32 32" />
+    case 'DAI': return <DAI width={size} height={size} viewBox="0 0 32 32" />
+    case 'USDC': return <USD width={size} height={size} viewBox="0 0 32 32" />
+    case 'REP': return <REP width={size} height={size} viewBox="0 0 32 32" />
+    case 'SNT': return <SNT width={size} height={size} viewBox="0 0 32 32" />
+    case 'TRX': return <TRX width={size} height={size} viewBox="0 0 32 32" />
+    case 'TUSD': return <TUSD width={size} height={size} viewBox="0 0 32 32" />
+    case 'WTC': return <WTC width={size} height={size} viewBox="0 0 32 32" />
+    case 'ETH': return <ETH width={size} height={size} viewBox="0 0 32 32" />
+    case 'WETH': return <ETH width={size} height={size} viewBox="0 0 32 32" />
+    case 'ZRX': return <ZRX width={size} height={size} viewBox="0 0 32 32" />
+    case 'GTC': return <GTC width={size} height={size} viewBox="0 0 32 32" />
+    default: return <Img fallbacks={[`https://cdn.jsdelivr.net/npm/obyte-icons@latest/build/${transform(name).toUpperCase()}-INV.svg`, `https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.17.2/svg/color/${transform(name).toLowerCase()}.svg`, '/plug.svg']} width={size - 2} height={size - 2} />
   }
-}
+});
 
 
 export default ColoredCryptoIcon
