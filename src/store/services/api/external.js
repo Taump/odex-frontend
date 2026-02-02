@@ -14,11 +14,18 @@ const request = (endpoint, options) => {
   })
 }
 
+const keysToUpperCase = obj => {
+    return Object.keys(obj).reduce((acc, key) => {
+        acc[key.toUpperCase()] = obj[key]
+        return acc
+    }, {})
+}
+
 export const fetchExchangeRates = async (baseCurrencies, quoteCurrencies) => {
     baseCurrencies = baseCurrencies.join(',')
     quoteCurrencies = quoteCurrencies.join(',')
 
-    const response = await request(`/data/pricemulti?fsyms=${baseCurrencies}&tsyms=${quoteCurrencies}`)
+    const response = await request(`/api/v3/simple/price?symbols=${baseCurrencies}&vs_currencies=${quoteCurrencies}`)
 
     if (response.status !== 200) {
         throw new Error('error')
@@ -26,7 +33,7 @@ export const fetchExchangeRates = async (baseCurrencies, quoteCurrencies) => {
 
     const exchangeRates = await response.json()
 
-    return exchangeRates
+    return keysToUpperCase(exchangeRates)
 }
 
 
