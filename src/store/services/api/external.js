@@ -15,10 +15,15 @@ const request = (endpoint, options) => {
 }
 
 const keysToUpperCase = obj => {
-    return Object.keys(obj).reduce((acc, key) => {
-        acc[key.toUpperCase()] = obj[key]
-        return acc
-    }, {})
+    let u = {}
+    for (let k in obj) {
+        const v = obj[k]
+        if (v && typeof v === 'object' && !Array.isArray(v))
+            u[k.toUpperCase()] = keysToUpperCase(v)
+        else
+            u[k.toUpperCase()] = obj[k]
+    }
+    return u
 }
 
 export const fetchExchangeRates = async (baseCurrencies, quoteCurrencies) => {
