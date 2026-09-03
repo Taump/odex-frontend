@@ -12,7 +12,7 @@ const defaultInitialState = {
   byPair: defaultTokenPairs,
   data: {},
   favorites: [],
-  currentPair: (DEFAULT_NETWORK_ID === 'testnet') ? 'GBYTE/USDC' : 'GBYTE/USDC',
+  currentPair: (DEFAULT_NETWORK_ID === 'testnet') ? 'GBYTE/USDC' : 'GBYTE/USDC_2',
   sortedPairs: [],
 }
 

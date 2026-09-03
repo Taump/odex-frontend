@@ -21,9 +21,9 @@ const quoteTokensBySymbolsTable = {
       asset: assets['livenet']['GBYTE'],
       decimals: 9,
     },
-    USDC: {
-      symbol: 'USDC',
-      asset: assets['livenet']['USDC'],
+    USDC_2: {
+      symbol: 'USDC_2',
+      asset: assets['livenet']['USDC_2'],
       decimals: 4,
     },
   },

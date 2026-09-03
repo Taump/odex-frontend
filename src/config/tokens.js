@@ -60,13 +60,13 @@ const defaultTokenDecimals = {
   },
   livenet: {
     GBYTE: 9,
-    USDC: 4,
+    USDC_2: 4,
   },
 }
 
 const defaultTokens = [
   "GBYTE",
-  "USDC",
+  "USDC_2",
 ]
 
 let tokensBySymbolTable = {}
