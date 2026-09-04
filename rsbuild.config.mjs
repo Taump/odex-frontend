@@ -51,7 +51,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/rates': {
-        target: 'https://min-api.cryptocompare.com',
+        target: 'https://api.coingecko.com',
         pathRewrite: { '^/rates': '' },
         changeOrigin: true,
       },

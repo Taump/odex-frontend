@@ -5,9 +5,9 @@ import fetch from 'isomorphic-fetch'
 const request = (endpoint, options) => {
   return fetch(`${EXCHANGE_RATE_API_URL}${endpoint}`, {
     headers: {
-    //  'Access-Control-Allow-Origin': '*',
-      Accept: 'application/json',
-      'Content-Type': 'application/json'
+      // no Content-Type: these are GETs without a body, and the header is not
+      // CORS-safelisted, so it would force a preflight the rate API often fails
+      Accept: 'application/json'
     },
     mode: 'cors',
     ...options
@@ -30,15 +30,20 @@ export const fetchExchangeRates = async (baseCurrencies, quoteCurrencies) => {
     baseCurrencies = baseCurrencies.join(',')
     quoteCurrencies = quoteCurrencies.join(',')
 
-    const response = await request(`/api/v3/simple/price?symbols=${baseCurrencies}&vs_currencies=${quoteCurrencies}`)
+    try {
+        const response = await request(`/api/v3/simple/price?symbols=${baseCurrencies}&vs_currencies=${quoteCurrencies}`)
 
-    if (response.status !== 200) {
-        throw new Error('error')
+        if (response.status !== 200) {
+            throw new Error(`status ${response.status}`)
+        }
+
+        return keysToUpperCase(await response.json())
+    } catch (e) {
+        // rates only decorate the UI: callers dispatch the pair list right after
+        // this, and a rate-feed outage must not take that down with it
+        console.warn('exchange rates unavailable', e)
+        return {}
     }
-
-    const exchangeRates = await response.json()
-
-    return keysToUpperCase(exchangeRates)
 }
 
 
