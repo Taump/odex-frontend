@@ -36,7 +36,7 @@ const transform = (name) => {
   switch (name) {
     case 'KUSDC': return 'USDC'
     case 'KUSDT': return 'USDT'
-    default: return name;
+    default: return name || '' // symbol can be undefined for a pair /tokens does not know
   }
 }
 

@@ -82,7 +82,8 @@ class TokenSearcher extends React.PureComponent<Props, State> {
       return {gotData: true}
     }
     // const currentQuoteToken = quoteTokens[0];
-    const defaultPairs = tokenPairsByQuoteToken[currentQuoteToken];
+    // pairs quoted in a token outside config/quotes.js have no bucket here
+    const defaultPairs = tokenPairsByQuoteToken[currentQuoteToken] || [];
     const selectedPair = defaultPairs.filter(pair => pair.pair === currentPair.pair)[0];
 
     const { token1, token2 } = nextProps.match.params;

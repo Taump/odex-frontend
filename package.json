@@ -2,10 +2,10 @@
   "name": "odex-frontend",
   "version": "0.1.0",
   "scripts": {
-    "start": "react-app-rewired start",
+    "start": "rsbuild dev",
     "server": "PORT=8080 REACT_APP_DEFAULT_NETWORK_ID=testnet node server.js",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test --env=jsdom --watch",
+    "build": "rsbuild build",
+    "test": "react-scripts test --env=jsdom --watch",
     "eject": "react-scripts eject",
     "flow": "flow",
     "flowwatch": "fswatch -o ./ | xargs -n1 -I{} sh -c 'clear; printf \"\\033[3J\" && flow'",
@@ -14,15 +14,6 @@
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "build-svg": "npx @svgr/cli -d ./node-modules/cryptocurrency-icons/svg/color/ src/components/Common/Icons/"
-  },
-  "proxy": {
-    "/rates": {
-      "target": "https://min-api.cryptocompare.com",
-      "pathRewrite": {
-        "^/rates": ""
-      },
-      "changeOrigin": true
-    }
   },
   "dependencies": {
     "@amcharts/amcharts3-react": "^3.1.0",
@@ -58,8 +49,6 @@
     "rc-steps": "^3.5.0",
     "react": "^16.12.0",
     "react-addons-css-transition-group": "^15.6.2",
-    "react-app-rewire-hot-loader": "^1.0.3",
-    "react-app-rewired": "^1.6.2",
     "react-copy-to-clipboard": "^5.0.2",
     "react-document-title": "^2.0.3",
     "react-dom": "^16.12.0",
@@ -67,7 +56,6 @@
     "react-financial-charts": "^0.5.1",
     "react-ga": "^2.7.0",
     "react-grid-layout": "^0.16.6",
-    "react-hot-loader": "^4.12.18",
     "react-idle-timer": "^4.2.12",
     "react-intl": "^2.9.0",
     "react-lazyload": "^2.6.5",
@@ -75,7 +63,6 @@
     "react-redux": "^5.1.2",
     "react-resizable": "^1.7.5",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.4",
     "react-spring": "^7.2.11",
     "react-stockcharts": "^0.7.8",
     "react-transition-group": "^2.4.0",
@@ -93,6 +80,13 @@
     "typescript": "^3.7.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.29.7",
+    "@babel/plugin-syntax-jsx": "^7.29.7",
+    "@babel/preset-flow": "^7.29.7",
+    "@rsbuild/core": "^2.2.3",
+    "@rsbuild/plugin-babel": "^2.1.0",
+    "@rsbuild/plugin-node-polyfill": "^1.4.6",
+    "@rsbuild/plugin-react": "^2.1.0",
     "@storybook/addon-actions": "^3.4.12",
     "@storybook/addon-console": "^1.2.1",
     "@storybook/addon-info": "^3.4.12",
@@ -109,7 +103,7 @@
     "husky": "^0.14.3",
     "lint-staged": "^7.3.0",
     "prettier": "^1.19.1",
-    "react-app-rewire-uglifyjs": "^0.1.1",
+    "react-scripts": "1.1.4",
     "sass": "1.17.4"
   },
   "lint-staged": {

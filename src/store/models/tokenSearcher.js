@@ -18,6 +18,9 @@ import { getQuoteToken, getBaseToken } from '../../utils/tokens'
 
 import history from '../history';
 
+const tokenFromPair = (symbol: string, asset: string, decimals: number) =>
+  ({ symbol, asset, decimals, balance: null, value: null })
+
 export default function tokenSearcherSelector(state: State) {
   let domain = getTokenPairsDomain(state)
   let accountBalancesDomain = getAccountBalancesDomain(state)
@@ -68,8 +71,12 @@ export default function tokenSearcherSelector(state: State) {
   let pairsList = domain.getListedPairs()
 
   let tokenData = accountBalancesDomain.getBalances(tokenDomain.tokens(), accountDomain.referenceCurrency)
+  // /pairs can list a token that /tokens does not return; the pair record still
+  // carries what TokenSearcherRenderer needs (it reads .decimals off these)
   let baseToken = tokenData.find((el) => el.symbol === baseTokenSymbol)
+    || tokenFromPair(baseTokenSymbol, rawPair.baseAsset, rawPair.baseTokenDecimals)
   let quoteToken = tokenData.find((el) => el.symbol === quoteTokenSymbol)
+    || tokenFromPair(quoteTokenSymbol, rawPair.quoteAsset, rawPair.quoteTokenDecimals)
 
   return {
     tokenPairs,

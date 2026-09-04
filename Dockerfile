@@ -5,6 +5,8 @@ WORKDIR /usr/src/app
 
 ENV PATH /usr/src/app/node_modules/.bin:$PATH
 COPY package.json /usr/src/app/package.json
+COPY rsbuild.config.mjs /usr/src/app/rsbuild.config.mjs
+COPY template.html /usr/src/app/template.html
 COPY public/ /usr/src/app/public/
 COPY src/ /usr/src/app/src/
 
